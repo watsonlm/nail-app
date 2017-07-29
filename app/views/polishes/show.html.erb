@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @polish.name %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @polish.brand %>
+</p>
+
+<p>
+  <strong>Hex:</strong>
+  <%= @polish.hex %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @polish.color %>
+</p>
+
+<%= link_to 'Edit', edit_polish_path(@polish) %> |
+<%= link_to 'Back', polishes_path %>

@@ -1,0 +1,37 @@
+<%= form_with(model: polish, local: true) do |form| %>
+  <% if polish.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(polish.errors.count, "error") %> prohibited this polish from being saved:</h2>
+
+      <ul>
+      <% polish.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :polish_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :brand %>
+    <%= form.text_field :brand, id: :polish_brand %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hex %>
+    <%= form.text_field :hex, id: :polish_hex %>
+  </div>
+
+  <div class="field">
+    <%= form.label :color %>
+    <%= form.text_field :color, id: :polish_color %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
