@@ -1,0 +1,15 @@
+<div class="col-md-3">
+	<div class="panel panel-default">
+	  <div class="panel-heading" style="background-color: <%= polish.hex %>"></div>
+	  <div class="panel-body">
+	    <p><%= polish.name %></p>
+	    <p><%= polish.brand %></p>
+	    <p><%= polish.hex %></p>
+	    <p>
+	      <%= link_to 'Show', polish, class: 'btn btn-primary' %>
+	      <%= link_to 'Edit', edit_polish_path(polish), class: 'btn btn-warning' %>
+	      <%= link_to 'Destroy', polish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+	    </p>
+	  </div>
+	</div>
+</div>

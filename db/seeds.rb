@@ -11,16 +11,14 @@ UserPolish.destroy_all
 
 100.times do
 	polish = Polish.create(
-		name: "#{Faker::Dessert.flavor} #{Faker::Dessert.variety}",
-		color: Faker::Color.hex_color,
-		brand: "Sugar Polish",
+		name: "#{Faker::Coffee.notes} #{Faker::Dessert.flavor} #{Faker::Dessert.variety}",
+		brand: "Sugar Nail Polish",
 		)
 end
 
 100.times do
 	polish = Polish.create(
 		name: "#{Faker::Lovecraft.word.capitalize} #{Faker::Color.color_name.capitalize}",
-		color: Faker::Color.hex_color,
 		brand: "Weird Nails",
 		)
 end
@@ -28,9 +26,14 @@ end
 100.times do
 	polish = Polish.create(
 		name: "#{Faker::Cat.name} #{Faker::Space.star}",
-		color: Faker::Color.hex_color,
 		brand: "Cosmic Lacquers",
 		)
+end
+
+Polish.all.each do |polish|
+	hex = Faker::Color.hex_color
+	color = ColorNamer.name_from_html_hash(hex)
+	polish.update(hex: hex, color: color[2])
 end
 
 10.times do

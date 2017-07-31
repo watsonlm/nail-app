@@ -2,31 +2,11 @@
 
 <h1>Polishes</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Brand</th>
-      <th>Hex</th>
-      <th>Color</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @polishes.each do |polish| %>
-      <tr>
-        <td><%= polish.name %></td>
-        <td><%= polish.brand %></td>
-        <td><%= polish.hex %></td>
-        <td><%= polish.color %></td>
-        <td><%= link_to 'Show', polish %></td>
-        <td><%= link_to 'Edit', edit_polish_path(polish) %></td>
-        <td><%= link_to 'Destroy', polish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <% @polishes.each do |polish| %>
+    <%= render polish %>
+  <% end %>
+</div>
 
 <br>
 

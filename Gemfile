@@ -27,7 +27,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap-sass'
-gem 'jquery'
+gem 'jquery-rails'
 gem "font-awesome-rails"
 gem 'carrierwave'
 gem 'devise'
@@ -35,6 +35,8 @@ gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'b
 gem 'faker'
 gem 'fog-aws'
 gem 'figaro'
+gem 'color_namer'
+gem 'color-proximity'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
