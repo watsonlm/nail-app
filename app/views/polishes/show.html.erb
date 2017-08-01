@@ -1,24 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @polish.name %>
-</p>
-
-<p>
-  <strong>Brand:</strong>
-  <%= @polish.brand %>
-</p>
-
-<p>
-  <strong>Hex:</strong>
-  <%= @polish.hex %>
-</p>
-
-<p>
-  <strong>Color:</strong>
-  <%= @polish.color %>
-</p>
+<div class="row">
+  <div class="col-md-8">
+    <p><%= @polish.name %></p>
+	    <p><%= @polish.brand %></p>
+	    <p><%= @polish.hex %></p>
+  </div>
+  <div class="col-md-4">
+  	<div class="well">
+  		<% if UserPolish.where(user_id: current_user.id, polish_id: @polish.id).exists? %>
+  		  <%= link_to "Remove From Collection", remove_from_collection_path(polish_id: @polish.id), class: "btn btn-primary" %>
+  		<% else %>
+  		  <%= link_to "Add to Collection", add_to_collection_path(polish_id: @polish.id), class: "btn btn-primary" %>
+  		<% end %>
+  	</div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_polish_path(@polish) %> |
 <%= link_to 'Back', polishes_path %>

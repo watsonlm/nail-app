@@ -46,7 +46,7 @@ end
 
 200.times do
 	user_polish = UserPolish.create(
-		userid: rand(1..10),
-		polishid: rand(1..300),
+		user_id: rand(1..10),
+		polish_id: rand(1..300),
 		)
 end

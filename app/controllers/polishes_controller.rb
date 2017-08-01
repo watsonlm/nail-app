@@ -4,7 +4,7 @@ class PolishesController < ApplicationController
   # GET /polishes
   # GET /polishes.json
   def index
-    @polishes = Polish.all
+    @polishes = Polish.all.page(params[:page])
   end
 
   # GET /polishes/1
@@ -19,6 +19,21 @@ class PolishesController < ApplicationController
 
   # GET /polishes/1/edit
   def edit
+  end
+
+  def collection
+    @user = User.find(params[:id])
+    @collection = UserPolish.where(user_id: @user.id)
+  end
+
+  def add_to_collection
+    current_user.user_polishes.create(polish_id: params[:polish_id])
+    redirect_back(fallback_location: root_path)
+  end
+
+  def remove_from_collection
+    current_user.user_polishes.where(polish_id: params[:polish_id]).destroy_all
+    redirect_back(fallback_location: root_path)
   end
 
   # POST /polishes

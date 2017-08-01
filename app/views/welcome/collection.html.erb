@@ -1,0 +1,8 @@
+<div class="row">
+  <h1><%= @user.name %>'s Collection</h1>
+  <ul>
+    <%= @collection.each do |polish| %>
+      <li><%= polish.name %></li>
+    <% end %>
+  </ul>
+</div>

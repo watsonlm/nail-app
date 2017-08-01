@@ -1,0 +1,14 @@
+<div class="form-group">
+  <%= form.hidden_field :userid, value: current_user.id %>
+</div>
+
+<div class="form-group">
+  <%= form.hidden_field :polishid, value: @polish.id %>
+
+<div class="form-group">
+  <% form.text_area :comment_entry, placeholder: "What do you think about this polish?", class: "form-control" %>
+</div>
+
+<div class="form-group">
+    <%= form.submit "Post", class: "btn btn-primary" %>
+</div>
