@@ -1,2 +1,28 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="row">
+  <div class="col-md-9">
+  	<div class="panel panel-default">
+  		<div class="panel-body">
+  			<h1>Welcome to my as yet unnamed nail polish community</h1>
+  			<p>More stuff will be here, like:</p>
+  			  <ul>
+  			  	<li>Make friends</li>
+  			  	<li>Search for closest colors</li>
+  			  	<li>Post nail arts</li>
+  			  	<li>Scan images for colors</li>
+  			  </ul>
+  		</div>
+  	</div>
+  </div>
+  <div class="col-md-3">
+  	<div class="well">
+  		<h2>Trending</h2>
+  		<ul class="list-unstyled">
+  		  <% @popular.each do |p| %>
+  		    <%= link_to polish_path(p) do %>
+  		  	  <li><i class="fa fa-paint-brush" aria-hidden="true" style="color: <%= p.hex %>"></i> <%= p.name %>
+  		  	<% end %>
+  		  <% end %>
+  		</ul>
+  	</div>
+  </div>
+</div>

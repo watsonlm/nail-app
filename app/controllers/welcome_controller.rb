@@ -1,11 +1,10 @@
 class WelcomeController < ApplicationController
   def index
+  	@popular = Polish.order(owned: :desc).limit(10)
   end
 
-  def gallery
-  end
-
-  def nail_art
+  def color_search
+    @polishes = Polish.all
   end
 
   def collection

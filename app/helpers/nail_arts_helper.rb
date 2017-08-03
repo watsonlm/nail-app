@@ -1,0 +1,2 @@
+module NailArtsHelper
+end

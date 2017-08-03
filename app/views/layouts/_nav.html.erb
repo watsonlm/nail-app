@@ -14,7 +14,25 @@
 	      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	        <ul class="nav navbar-nav">
 	          <li><%= link_to "Search", polishes_path %></li>
-	          <li><%= link_to "My Collection", collection_path(user_id: current_user.id) %></li>
+	          <% if user_signed_in? %>
+	            <li><%= link_to "My Collection", collection_path(user_id: current_user.id) %></li>
+	          <% end %>
+	          <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">By Color Family <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+				  <% @color_families.each do |color| %>
+				    <li><%= link_to color, color_family_path(color: color) %></li>
+				  <% end %>
+				</ul>
+			  </li>
+	          <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">By Brand <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+				  <% @brands.each do |brand| %>
+				    <li><%= link_to brand, brand_path(brand: brand) %></li>
+				  <% end %>
+				</ul>
+			  </li>
 	        </ul>
 	        <ul class="nav navbar-nav navbar-right">
 	          <% if user_signed_in? %>

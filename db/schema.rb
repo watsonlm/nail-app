@@ -10,12 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731143706) do
+ActiveRecord::Schema.define(version: 20170803010202) do
 
   create_table "comments", force: :cascade do |t|
     t.string "comment_entry"
-    t.integer "userid"
-    t.integer "polishid"
+    t.integer "user_id"
+    t.integer "polish_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "nail_arts", force: :cascade do |t|
+    t.string "nailpic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,6 +33,7 @@ ActiveRecord::Schema.define(version: 20170731143706) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "owned"
   end
 
   create_table "user_polishes", force: :cascade do |t|

@@ -1,10 +1,21 @@
 class PolishesController < ApplicationController
   before_action :set_polish, only: [:show, :edit, :update, :destroy]
+  before_action :owned, only: [:index, :brand, :color_family]
 
   # GET /polishes
   # GET /polishes.json
   def index
-    @polishes = Polish.all.page(params[:page])
+    @polishes = Polish.all.order(:name).page(params[:page])
+  end
+
+  def brand
+    @polishes = Polish.where(brand: params[:brand]).order(:name).page(params[:page])
+    @brand = params[:brand]
+  end
+
+  def color_family
+    @polishes = Polish.where(color: params[:color]).order(:hex).page(params[:page])
+    @color = params[:color]
   end
 
   # GET /polishes/1
@@ -19,6 +30,12 @@ class PolishesController < ApplicationController
 
   # GET /polishes/1/edit
   def edit
+  end
+
+  def owned
+    if user_signed_in?
+      @owned = UserPolish.where(user_id: current_user.id).pluck(:polish_id)
+    end
   end
 
   def collection

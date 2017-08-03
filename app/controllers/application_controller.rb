@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  before_action :categorize
+
+  def categorize
+  	@brands = Polish.distinct.pluck(:brand).sort
+  	@color_families = Polish.distinct.pluck(:color).sort
+  end
+
   protected
 
   def configure_permitted_parameters

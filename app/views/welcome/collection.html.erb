@@ -1,8 +1,10 @@
 <div class="row">
   <h1><%= @user.name %>'s Collection</h1>
-  <ul>
-    <%= @collection.each do |polish| %>
-      <li><%= polish.name %></li>
+  <ul class="list-unstyled">
+    <% @collection.each do |polish| %>
+      <%= link_to polish_path(polish) do %>
+        <li><i class="fa fa-paint-brush" aria-hidden="true" style="color: <%= polish.hex %>"><%= polish.name %></li>
+      <% end %>
     <% end %>
   </ul>
 </div>

@@ -2,13 +2,19 @@
 	<div class="panel panel-default">
 	  <div class="panel-heading" style="background-color: <%= polish.hex %>"></div>
 	  <div class="panel-body">
-	    <p><%= polish.name %></p>
-	    <p><%= polish.brand %></p>
+	    <p><%= link_to polish.name, polish_path(polish) %></p>
+	    <p><%= link_to polish.brand, brand_path(polish.brand) %></p>
+	    <p><%= link_to polish.color, color_family_path(polish.color) %></p>
 	    <p><%= polish.hex %></p>
 	    <p>
-	      <%= link_to 'Show', polish, class: 'btn btn-primary' %>
-	      <%= link_to 'Edit', edit_polish_path(polish), class: 'btn btn-warning' %>
-	      <%= link_to 'Destroy', polish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+	      <%= link_to 'More Info', polish, class: 'btn btn-primary' %>
+	        <% if user_signed_in? %>
+		      <% if @owned.include?(polish.id) %>
+	  		    <%= link_to "Remove From Collection", remove_from_collection_path(polish_id: polish.id), class: "btn btn-warning" %>
+	  		  <% else %>
+	  		    <%= link_to "Add to Collection", add_to_collection_path(polish_id: polish.id), class: "btn btn-info" %>
+	  		  <% end %>
+	  		<% end %>
 	    </p>
 	  </div>
 	</div>

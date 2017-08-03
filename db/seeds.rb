@@ -9,21 +9,21 @@ Polish.destroy_all
 User.destroy_all
 UserPolish.destroy_all
 
-100.times do
+20.times do
 	polish = Polish.create(
-		name: "#{Faker::Coffee.notes} #{Faker::Dessert.flavor} #{Faker::Dessert.variety}",
+		name: "#{Faker::Book.genre} #{Faker::Dessert.flavor} #{Faker::Dessert.variety}",
 		brand: "Sugar Nail Polish",
 		)
 end
 
-100.times do
+20.times do
 	polish = Polish.create(
 		name: "#{Faker::Lovecraft.word.capitalize} #{Faker::Color.color_name.capitalize}",
 		brand: "Weird Nails",
 		)
 end
 
-100.times do
+20.times do
 	polish = Polish.create(
 		name: "#{Faker::Cat.name} #{Faker::Space.star}",
 		brand: "Cosmic Lacquers",
@@ -44,9 +44,11 @@ end
 		 )
 end
 
-200.times do
+users = User.all.pluck(:id)
+polishes = Polish.all.pluck(:id)
+30.times do
 	user_polish = UserPolish.create(
-		user_id: rand(1..10),
-		polish_id: rand(1..300),
+		user_id: users.sample,
+		polish_id: polishes.sample,
 		)
 end

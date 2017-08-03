@@ -1,0 +1,21 @@
+<%= form_with(model: nail_art, local: true) do |form| %>
+  <% if nail_art.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(nail_art.errors.count, "error") %> prohibited this nail_art from being saved:</h2>
+
+      <ul>
+      <% nail_art.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="form-group">
+    <%= form.file_field :nailpic, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
